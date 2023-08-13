@@ -1,4 +1,4 @@
-from control import KeyPressModule as kp
+import control as kp
 
 
 kp.init()
@@ -7,6 +7,6 @@ def main():
     print (kp.getKey('s'))
 
 if __name__ == '__main__':
-    init()
+    kp.init()
     while True:
         main()
