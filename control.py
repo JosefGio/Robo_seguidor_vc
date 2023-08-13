@@ -1,64 +1,52 @@
 import pygame
+import time
+
+memory_key = 0
+
 def init():
     pygame.init()
     win = pygame.display.set_mode((100,100))
 
+
 def getKey (keyName):
+    global memory_key
     ans = False
     for eve in pygame.event.get():pass
     keyInput = pygame.key.get_pressed()
-    
     myKey = getattr(pygame, 'K_{}'. format(keyName))
-    if keyInput [myKey]:
+    if keyInput [myKey] == True and memory_key == False:
         ans = True
-    pygame.display.update()
+        ##return keyInput [myKey], memory_key
+    else:
+        ans = False
+    memory_key = keyInput [myKey]
     return ans
     
+    
 def main():
-    if getKey ('KP8'):
+    
+    
+    if getKey ('KP8') == True:
         print ('Norte')
-        #MOTOR 1
-       # p0.value(1)
-       # p1.value(0)
-        #MOTOR 2
-       # p2.value(0)
-       #  p3.value(1)
-        #MOTOR 3
-       #  p4.value(1)
-       # p5.value(0)
-        #MOTOR 4
-       # p6.value(0)
-       # p7.value(1)
-    if getKey ('KP2'):
-        print ('Sul')
-         #MOTOR 1
-       # p0.value(0)
-       # p1.value(1)
-        #MOTOR 2
-       # p2.value(1)
-       # p3.value(0)
-        #MOTOR 3
-       # p4.value(0)
-       # p5.value(1)
-        #MOTOR 4
-       # p6.value(1)
-       # p7.value(0)
-    if getKey ('KP6'):
+    elif getKey ('KP6') == True:
         print ('Leste')
-        #MOTOR 1
-       # p0.value(1)
-       # p1.value(0)
-        #MOTOR 2
-       # p2.value(1)
-       # p3.value(0)
-        #MOTOR 3
-      #  p4.value(0)
-       # p5.value(1)
-        #MOTOR 4
-      #  p6.value(0)
-      # p7.value(1)
-    if getKey ('KP4'):
+    elif getKey ('KP2') == True:
+        print ('Sul')
+    elif getKey ('KP4') == True:
         print ('Oeste')
+    elif getKey ('KP9') == True:
+        print ('Nordeste')
+    elif getKey ('KP3') == True:
+        print ('Sudeste')
+    elif getKey ('KP7') == True:
+        print ('Noroeste')
+    elif getKey ('KP1') == True:
+        print ('Sudoeste')
+    elif getKey ('KP5') == True:
+        print ('Parado')
+    
+    time.sleep(0.1)
+    pygame.display.update()
     
 if __name__ == '__main__':
     init()
